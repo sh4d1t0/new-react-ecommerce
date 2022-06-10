@@ -41,6 +41,11 @@ const devConfig = {
   },
   plugins: [new ReactRefreshWebpackPlugin()],
   devtool: 'eval-source-map',
+  resolve: {
+    alias: {
+      'react-dom$': 'react-dom/profiling',
+    },
+  },
 }
 
 module.exports = merge(common, devConfig)
