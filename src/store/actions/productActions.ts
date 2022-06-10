@@ -21,11 +21,11 @@ export const fetchProducts = (): ThunkAction<
 }
 
 export const fetchParticularProduct = (
-  product_id: number
+  productId: number
 ): ThunkAction<void, RootState, unknown, AnyAction> => {
   return async (dispatch, getState) => {
     const response: ProductModel = await productService.getParticularProduct(
-      product_id
+      productId
     )
     dispatch(productActions.setParticularProduct(response))
   }
