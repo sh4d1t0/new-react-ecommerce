@@ -1,0 +1,62 @@
+/* Tailwindcss base */
+@import 'tailwindcss/base';
+/* Tailwindcss components */
+@import 'tailwindcss/components';
+@import './customComponents.css';
+/* Tailwindcss utilities */
+@import 'tailwindcss/utilities';
+
+@layer base {
+  body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+
+  h1 {
+    @apply text-3xl font-bold underline;
+  }
+}
+
+@layer components {
+  .AppLogo {
+    @apply pointer-events-none h-96;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .AppLogo {
+      animation: AppLogoSpin infinite 20s linear;
+      -webkit-animation: AppLogoSpin infinite 20s linear;
+    }
+  }
+
+  @keyframes AppLogoSpin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+@layer utilities {
+  .success {
+    @apply bg-green-700 text-white ring-green-600 hover:bg-green-600 focus:bg-green-700/90 active:bg-green-800 !important;
+  }
+  .warning {
+    @apply bg-yellow-700 text-white ring-yellow-600 hover:bg-yellow-600 focus:bg-yellow-700/90 active:bg-yellow-700 !important;
+  }
+  .error {
+    @apply bg-red-600 text-white ring-red-700 hover:bg-red-700 focus:bg-red-700/90 active:bg-red-600 !important;
+  }
+  .secondary {
+    @apply bg-gray-600 text-white ring-gray-700 hover:bg-gray-700 focus:bg-gray-600/90 active:bg-gray-600 !important;
+  }
+}
