@@ -6,10 +6,10 @@ export default {
     const response = await Api().get('products')
     return response.data
   },
-  async getParticularProduct(product_id: number) {
+  async getParticularProduct(productId: number) {
     const response = await Api().get('products')
     return response.data.filter(
-      (product: ProductModel) => product.id === product_id
+      (product: ProductModel) => product.id === productId
     )[0]
   },
 }
