@@ -1,16 +1,22 @@
 import React, { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../../hooks'
 import { fetchParticularProduct } from '../../../store/actions/productActions'
+import { Button } from '../../atoms/Button'
 
 export const ProductCardDetail = () => {
   const params = useParams()
   const productId = Number(params.productId)
+  const navigate = useNavigate()
 
   const dispatch = useAppDispatch()
   const particularProduct = useAppSelector(
     state => state.product.particular_product
   )
+
+  const AddCart = () => {
+    navigate('/cart')
+  }
 
   useEffect(() => {
     dispatch(fetchParticularProduct(productId))
@@ -18,8 +24,73 @@ export const ProductCardDetail = () => {
 
   return (
     <>
-      <h1>Detalle del producto {params.productId}</h1>
-      {<p>{particularProduct.title}</p>}
+      {
+        <div className="py-6 px-4" key={particularProduct.id}>
+          <div className="flex max-w-md overflow-hidden rounded-lg bg-white shadow-lg">
+            <div className="mx-auto max-w-md overflow-hidden rounded-xl bg-white shadow-md md:max-w-2xl">
+              <div className="md:flex">
+                <div className="md:shrink-0">
+                  <img
+                    className="h-48 w-full object-cover md:h-full md:w-40"
+                    src={particularProduct.image}
+                    alt={particularProduct.title}
+                  />
+                </div>
+                <div className="p-4">
+                  <h1 className="text-2xl font-semibold uppercase tracking-wide text-indigo-500">
+                    {particularProduct.title}
+                  </h1>
+                  <p className="mt-2 text-sm text-slate-500">
+                    {particularProduct.description}
+                  </p>
+                  <div className="item-center mt-2 flex">
+                    <svg
+                      className="h-5 w-5 fill-current text-gray-700"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
+                    </svg>
+                    <svg
+                      className="h-5 w-5 fill-current text-gray-700"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
+                    </svg>
+                    <svg
+                      className="h-5 w-5 fill-current text-gray-700"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
+                    </svg>
+                    <svg
+                      className="h-5 w-5 fill-current text-gray-500"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
+                    </svg>
+                    <svg
+                      className="h-5 w-5 fill-current text-gray-500"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
+                    </svg>
+                  </div>
+                  <div className="item-center mt-3 flex justify-between">
+                    <h1 className="text-sm font-bold text-gray-700">
+                      ${particularProduct.price}
+                    </h1>
+                    <div className="px-3 py-2">
+                      <Button onClick={AddCart} variant="contained">
+                        Agregar al carrito
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
     </>
   )
 }

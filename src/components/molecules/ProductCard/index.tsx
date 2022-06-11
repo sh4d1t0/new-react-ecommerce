@@ -31,9 +31,6 @@ export const ProductCard = () => {
                   <h1 className="text-2xl font-semibold uppercase tracking-wide text-indigo-500">
                     {product.title}
                   </h1>
-                  <p className="mt-2 text-sm text-slate-500">
-                    {product.description}
-                  </p>
                   <div className="item-center mt-2 flex">
                     <svg
                       className="h-5 w-5 fill-current text-gray-700"
@@ -79,7 +76,7 @@ export const ProductCard = () => {
                         }
                         variant="contained"
                       >
-                        Agregar al carrito
+                        Detalles
                       </Button>
                     </div>
                   </div>
